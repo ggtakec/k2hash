@@ -451,7 +451,7 @@ void* K2HShm::ExpandArea(long type, size_t area_length, off_t& new_area_start)
 			// [NOTICE]
 			// If type is K2H_AREA_PAGE and ShmFile is not full mapping, so this case does not need to mmapping.
 			// Set especially value which is not NULL.
-			pNewArea = reinterpret_cast<void*>(-1);
+			pNewArea = reinterpret_cast<void*>(static_cast<uintptr_t>(-1));
 		}else{
 			if(MAP_FAILED == (pNewArea = mmap(NULL, area_length, PROT_READ | PROT_WRITE, MAP_SHARED, ShmFd, new_area_start))){
 				ERR_K2HPRN("Could not mmap file, errno = %d", errno);
@@ -462,7 +462,7 @@ void* K2HShm::ExpandArea(long type, size_t area_length, off_t& new_area_start)
 	pHead->unassign_area = new_area_start + area_length;
 
 	// Add mmap area
-	if(K2H_AREA_PAGE != type || reinterpret_cast<void*>(-1) != pNewArea){
+	if(K2H_AREA_PAGE != type || static_cast<uintptr_t>(-1) != reinterpret_cast<uintptr_t>(pNewArea)){
 		MmapInfos.AddArea(type, new_area_start, pNewArea, area_length);
 	}
 

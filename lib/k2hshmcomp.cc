@@ -147,7 +147,8 @@ PELEMENT K2HShm::ReserveElement(void* pRelExpArea, size_t ExpLength)
 	// cppcheck-suppress unmatchedSuppression
 	// cppcheck-suppress constVariablePointer
 	const PELEMENT	pLastPos	= ADDPTR(reinterpret_cast<PELEMENT>(pRelExpArea), static_cast<off_t>(ExpLength));
-
+	// cppcheck-suppress unmatchedSuppression
+	// cppcheck-suppress constVariablePointer
 	for(PELEMENT pElement = static_cast<PELEMENT>(Abs(pHead->pfree_elements)), pRelElement = pHead->pfree_elements; pElement; pElement = static_cast<PELEMENT>(Abs(pElement->same)), pRelElement = pElement->same){
 		// check target area
 		if(pRelElement < pStartPos || pLastPos <= pRelElement){
