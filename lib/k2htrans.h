@@ -88,6 +88,9 @@ typedef struct transaction_k2h_prefix{
 	}
 	~transaction_k2h_prefix()
 	{
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress noCopyConstructor
+		// cppcheck-suppress noOperatorEq
 		K2H_Free(pprefix);
 	}
 
@@ -117,6 +120,9 @@ typedef struct transaction_thread_param{
 
 	~transaction_thread_param()
 	{
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress noCopyConstructor
+		// cppcheck-suppress noOperatorEq
 		K2H_Free(pprefix);
 	}
 }TRTHPARAM, *PTRTHPARAM;

@@ -62,6 +62,8 @@ K2HIterator::K2HIterator(const K2HIterator& other) : pShmUpdater(NULL)
 K2HIterator::~K2HIterator()
 {
 	ALObjCKI.Unlock();
+	// cppcheck-suppress unmatchedSuppression
+	// cppcheck-suppress noOperatorEq
 	K2H_Delete(pShmUpdater);
 }
 

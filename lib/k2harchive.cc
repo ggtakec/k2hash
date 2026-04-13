@@ -382,6 +382,8 @@ bool K2HArchive::Load(K2HShm* pShm) const
 	return result;
 }
 
+// cppcheck-suppress unmatchedSuppression
+// cppcheck-suppress functionStatic
 void* K2HArchive::ReadFile(int fd, size_t count, off_t offset) const
 {
 	if(-1 == fd || 0UL == count || 0L > offset){

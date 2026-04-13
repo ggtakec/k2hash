@@ -403,8 +403,6 @@ bool ConsoleInput::GetCommand(void)
 						}else{
 							history_pos++;
 							input = history[history_pos];
-							input_pos = input.length();
-
 							for(input_pos = 0UL; input_pos < input.length(); input_pos++){
 								putchar(input[input_pos]);
 							}
@@ -3590,24 +3588,38 @@ static bool QueueCommand(K2HShm& k2hash, params_t& params)
 
 	// check sub command
 	if(0 == strcasecmp(params[0].c_str(), "empty")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = QueueEmptySubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "count")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = QueueCountSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "read")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = QueueReadSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "push")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = QueuePushSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "pop")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = QueuePopSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "dump")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = QueueDumpSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "remove") || 0 == strcasecmp(params[0].c_str(), "rm")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = QueueRemoveSubCommand(k2hash, NULL, params);
 
 	}else if(2 <= params.size()){
@@ -3616,24 +3628,38 @@ static bool QueueCommand(K2HShm& k2hash, params_t& params)
 		params.erase(params.begin());
 
 		if(0 == strcasecmp(params[0].c_str(), "empty")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = QueueEmptySubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "count")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = QueueCountSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "read")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = QueueReadSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "push")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = QueuePushSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "pop")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = QueuePopSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "dump")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = QueueDumpSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "remove") || 0 == strcasecmp(params[0].c_str(), "rm")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = QueueRemoveSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else{
@@ -4266,24 +4292,38 @@ static bool KeyQueueCommand(K2HShm& k2hash, params_t& params)
 
 	// check sub command
 	if(0 == strcasecmp(params[0].c_str(), "empty")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = KeyQueueEmptySubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "count")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = KeyQueueCountSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "read")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = KeyQueueReadSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "push")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = KeyQueuePushSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "pop")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = KeyQueuePopSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "dump")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = KeyQueueDumpSubCommand(k2hash, NULL, params);
 
 	}else if(0 == strcasecmp(params[0].c_str(), "remove") || 0 == strcasecmp(params[0].c_str(), "rm")){
+		// cppcheck-suppress unmatchedSuppression
+		// cppcheck-suppress knownConditionTrueFalse
 		bResult = KeyQueueRemoveSubCommand(k2hash, NULL, params);
 
 	}else if(2 <= params.size()){
@@ -4292,24 +4332,38 @@ static bool KeyQueueCommand(K2HShm& k2hash, params_t& params)
 		params.erase(params.begin());
 
 		if(0 == strcasecmp(params[0].c_str(), "empty")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = KeyQueueEmptySubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "count")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = KeyQueueCountSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "read")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = KeyQueueReadSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "push")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = KeyQueuePushSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "pop")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = KeyQueuePopSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "dump")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = KeyQueueDumpSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else if(0 == strcasecmp(params[0].c_str(), "remove") || 0 == strcasecmp(params[0].c_str(), "rm")){
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
 			bResult = KeyQueueRemoveSubCommand(k2hash, strprefix.c_str(), params);
 
 		}else{

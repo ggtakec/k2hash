@@ -817,36 +817,105 @@ int main(int argc, const char **argv)
 
 	int command = CheckParameter(argc, argv);
 	switch (command) {
-		case MODE_CREATE: answer = create() ; break ;
-		case MODE_CREATEMINI: answer = createmini() ; break ;
+		case MODE_CREATE:
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
+			answer = create();
+			break;
 
-		case MODE_SET: answer = set() ; break ;
-		case MODE_GET: answer = k2htouch_get_value_attach() ; break ;
-		case MODE_GETATTR: answer = getattr() ; break ;
-		case MODE_REMOVE: answer = remove() ; break ;
+		case MODE_CREATEMINI:
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
+			answer = createmini();
+			break;
 
-		case MODE_ADDSUBKEY: answer = addsubkey() ; break ;
-		case MODE_GETSUBKEY: answer = getsubkey() ; break ;
+		case MODE_SET:
+			answer = set();
+			break;
 
-		case MODE_PUSH: answer = push() ; break ;
-		case MODE_POP: answer = pop() ; break ;
-		case MODE_CLEAR: answer = clear() ; break ;
+		case MODE_GET:
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
+			answer = k2htouch_get_value_attach();
+			break;
 
-		case MODE_KPUSH: answer = kpush() ; break ;
-		case MODE_KPOP: answer = kpop() ; break ;
-		case MODE_KCLEAR: answer = kclear() ; break ;
+		case MODE_GETATTR:
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
+			answer = getattr();
+			break;
 
-		case MODE_DTOR: answer = dtor() ; break ;
+		case MODE_REMOVE:
+			answer = remove();
+			break;
 
-		case MODE_LIST: answer = listall() ; break ;
-		case MODE_INFO: answer = info() ; break ;
+		case MODE_ADDSUBKEY:
+			answer = addsubkey();
+			break;
 
-		case MODE_MTIME : answer = mtime() ; break ;
-		case MODE_HISTORY : answer = history() ; break ;
-		case MODE_EXPIRE : answer = expire() ; break ;
+		case MODE_GETSUBKEY:
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
+			answer = getsubkey();
+			break;
 
-		default : answer = usage() ;
-		break ;
+		case MODE_PUSH:
+			answer = push();
+			break;
+
+		case MODE_POP:
+			answer = pop();
+			break;
+
+		case MODE_CLEAR:
+			answer = clear();
+			break;
+
+		case MODE_KPUSH:
+			answer = kpush();
+			break;
+
+		case MODE_KPOP:
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
+			answer = kpop();
+			break;
+
+		case MODE_KCLEAR:
+			answer = kclear();
+			break;
+
+		case MODE_DTOR:
+			answer = dtor();
+			break;
+
+		case MODE_LIST:
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
+			answer = listall();
+			break;
+
+		case MODE_INFO:
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress knownConditionTrueFalse
+			answer = info();
+			break;
+
+		case MODE_MTIME:
+			answer = mtime();
+			break;
+
+		case MODE_HISTORY:
+			answer = history();
+			break;
+
+		case MODE_EXPIRE:
+			answer = expire();
+			break;
+
+		default:
+			answer = usage();
+			break;
 	}
 
 	if (answer == EXIT_FAILURE ) cerr << "k2htouch command failed. Please try debugmode 'export K2HDBGMODE=ERR'" << endl ;
