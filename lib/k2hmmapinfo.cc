@@ -464,6 +464,8 @@ inline bool K2HMmapInfo::SetInternalMmapInfo(void) const
 //
 // This function does not use cache(ppInfoTop).
 //
+// cppcheck-suppress unmatchedSuppression
+// cppcheck-suppress functionStatic
 bool K2HMmapInfo::GetFd(const char* file, int& fd)
 {
 	return K2HMmapInfo::GetMan().GetFd(file, &fd, true);

@@ -97,6 +97,8 @@ void K2HDbgControl::User1Handler(int Signal)
 	K2HDbgControl::GetDbgCntl().BumpupDbgMode();
 }
 
+// cppcheck-suppress unmatchedSuppression
+// cppcheck-suppress functionStatic
 bool K2HDbgControl::SetUser1Handler(bool isEnable)
 {
 	if(isEnable != K2HDbgControl::isSetSignal){

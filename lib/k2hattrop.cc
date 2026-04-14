@@ -102,6 +102,8 @@ bool K2hAttrOpsBase::IsHandleAttr(const char* key) const
 	return IsHandleAttr(reinterpret_cast<const unsigned char*>(key), (key ? strlen(key) + 1 : 0));
 }
 
+// cppcheck-suppress unmatchedSuppression
+// cppcheck-suppress functionStatic
 bool K2hAttrOpsBase::GetAttr(K2HAttrs& attrs, const unsigned char* key, size_t keylen, const unsigned char** ppval, size_t& vallen) const
 {
 	if(!key || 0 == keylen){
@@ -120,11 +122,15 @@ bool K2hAttrOpsBase::GetAttr(K2HAttrs& attrs, const unsigned char* key, size_t k
 	return true;
 }
 
+// cppcheck-suppress unmatchedSuppression
+// cppcheck-suppress functionStatic
 bool K2hAttrOpsBase::SetAttr(K2HAttrs& attrs, const unsigned char* key, size_t keylen, const unsigned char* val, size_t vallen) const
 {
 	return (attrs.end() != attrs.insert(key, keylen, val, vallen));
 }
 
+// cppcheck-suppress unmatchedSuppression
+// cppcheck-suppress functionStatic
 bool K2hAttrOpsBase::RemoveAttr(K2HAttrs& attrs, const unsigned char* key, size_t keylen) const
 {
 	K2HAttrs::iterator	iter = attrs.find(key, keylen);

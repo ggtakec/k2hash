@@ -283,6 +283,9 @@ class TestData
 		}
 		virtual ~TestData()
 		{
+			// cppcheck-suppress unmatchedSuppression
+			// cppcheck-suppress noCopyConstructor
+			// cppcheck-suppress noOperatorEq
 			K2H_Free(pData);
 		}
 		const char* Data(void) const { return (0 == length ? &TestData::errData : pData); }

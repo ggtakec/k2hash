@@ -52,6 +52,8 @@ bool K2HShmUpdater::UpdateCheck(K2HShm* pk2hshm)
 // Checking & updating k2hash area does not check nest(counter).
 // So this method should be called any nest level.
 //
+// cppcheck-suppress unmatchedSuppression
+// cppcheck-suppress functionStatic
 bool K2HShmUpdater::UpdateArea(K2HShm* pk2hshm)
 {
 	if(!pk2hshm){
