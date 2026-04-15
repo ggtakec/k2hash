@@ -1,3 +1,9 @@
+k2hash (1.0.102) unstable; urgency=low
+
+  * Common build_helper.sh script was updated for fedora:44 - #119
+
+ -- Takeshi Nakatani <ggtakec@gmail.com>  Wed, 15 Apr 2026 16:45:47 +0900
+
 k2hash (1.0.101) unstable; urgency=low
 
   * Changed support OS and Fixed some code - #117
