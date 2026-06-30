@@ -194,9 +194,9 @@ bool K2HShm::ReplaceElement(PELEMENT pElement, void* pRelExpArea, size_t ExpLeng
 	}
 
 	// check in area
-	PELEMENT	pStartPos	= reinterpret_cast<PELEMENT>(pRelExpArea);
-	PELEMENT	pLastPos	= ADDPTR(reinterpret_cast<PELEMENT>(pRelExpArea), static_cast<off_t>(ExpLength));
-	PELEMENT	pRelElement	= reinterpret_cast<PELEMENT>(Rel(pElement));
+	const ELEMENT*	pStartPos	= reinterpret_cast<PELEMENT>(pRelExpArea);
+	const ELEMENT*	pLastPos	= ADDPTR(reinterpret_cast<PELEMENT>(pRelExpArea), static_cast<off_t>(ExpLength));
+	const ELEMENT*	pRelElement	= reinterpret_cast<PELEMENT>(Rel(pElement));
 	if(pRelElement < pStartPos || pLastPos <= pRelElement){
 		// element is not in target area
 		return true;
@@ -816,6 +816,7 @@ bool K2HShm::AreaCompress(bool& isCompressed)
 			PPAGEHEAD	pRelCurPageHead = pCurPage->GetPageHeadRelAddress();
 			if(pStartPos <= pRelCurPageHead && pRelCurPageHead < pLastPos){
 				// found
+				// cppcheck-suppress identicalInnerCondition
 				K2H_Delete(pCurPage);
 				isFoundPage = true;
 				break;

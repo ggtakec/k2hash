@@ -234,7 +234,7 @@ bool k2h_close(k2h_h handle)
 //---------------------------------------------------------
 bool k2h_transaction_param_we(k2h_h handle, bool enable, const char* transfile, const unsigned char* pprefix, size_t prefixlen, const unsigned char* pparam, size_t paramlen, const time_t* expire)
 {
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -426,7 +426,7 @@ bool k2h_add_attr_crypt_pass(k2h_h handle, const char* pass, bool is_default_enc
 
 bool k2h_print_attr_version(k2h_h handle, FILE* stream)
 {
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -449,7 +449,7 @@ bool k2h_print_attr_version(k2h_h handle, FILE* stream)
 
 bool k2h_print_attr_information(k2h_h handle, FILE* stream)
 {
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -497,7 +497,7 @@ bool k2h_get_value_wp(k2h_h handle, const unsigned char* pkey, size_t keylength,
 	*ppval		= NULL;
 	*pvallength	= 0UL;
 
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -550,7 +550,7 @@ bool k2h_get_value_np(k2h_h handle, const unsigned char* pkey, size_t keylength,
 	*ppval		= NULL;
 	*pvallength	= 0UL;
 
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -729,7 +729,7 @@ bool k2h_get_subkeys(k2h_h handle, const unsigned char* pkey, size_t keylength, 
 	*ppskeypck	= NULL;
 	*pskeypckcnt= 0UL;
 
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -802,7 +802,7 @@ int k2h_get_str_subkeys(k2h_h handle, const char* pkey, char*** ppskeyarray)
 	}
 	*ppskeyarray = NULL;
 
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return -1;
@@ -871,7 +871,7 @@ bool k2h_get_subkeys_np(k2h_h handle, const unsigned char* pkey, size_t keylengt
 	*ppskeypck	= NULL;
 	*pskeypckcnt= 0UL;
 
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -944,7 +944,7 @@ int k2h_get_str_subkeys_np(k2h_h handle, const char* pkey, char*** ppskeyarray)
 	}
 	*ppskeyarray = NULL;
 
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return -1;
@@ -1116,7 +1116,7 @@ bool k2h_get_attrs(k2h_h handle, const unsigned char* pkey, size_t keylength, PK
 	*ppattrspck	= NULL;
 	*pattrspckcnt= 0UL;
 
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -1546,7 +1546,7 @@ bool k2h_get_elements_by_hash(k2h_h handle, const k2h_hash_t starthash, const st
 		return false;
 	}
 
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -1884,7 +1884,7 @@ k2h_da_h k2h_da_handle(k2h_h handle, const unsigned char* pkey, size_t keylength
 	}
 
 	// attach object
-	K2HDAccess*	pAccess;
+	const K2HDAccess*	pAccess;
 	if(NULL == (pAccess = pShm->GetDAccessObj(pkey, keylength, acsmode))){
 		ERR_K2HPRN("Could not initialize internal K2HDAccess object.");
 		return K2H_INVALID_HANDLE;
@@ -1942,7 +1942,7 @@ bool k2h_da_free(k2h_da_h dahandle)
 
 ssize_t k2h_da_get_length(k2h_da_h dahandle)
 {
-	K2HDAccess*	pAccess = reinterpret_cast<K2HDAccess*>(dahandle);
+	const K2HDAccess*	pAccess = reinterpret_cast<K2HDAccess*>(dahandle);
 	if(!pAccess){
 		ERR_K2HPRN("Invalid k2h_da_h handle.");
 		return -1L;
@@ -1957,7 +1957,7 @@ ssize_t k2h_da_get_length(k2h_da_h dahandle)
 
 ssize_t k2h_da_get_buf_size(k2h_da_h dahandle)
 {
-	K2HDAccess*	pAccess = reinterpret_cast<K2HDAccess*>(dahandle);
+	const K2HDAccess*	pAccess = reinterpret_cast<K2HDAccess*>(dahandle);
 	if(!pAccess){
 		ERR_K2HPRN("Invalid k2h_da_h handle.");
 		return -1L;
@@ -1979,7 +1979,7 @@ bool k2h_da_set_buf_size(k2h_da_h dahandle, size_t bufsize)
 
 off_t k2h_da_get_offset(k2h_da_h dahandle, bool is_read)
 {
-	K2HDAccess*	pAccess = reinterpret_cast<K2HDAccess*>(dahandle);
+	const K2HDAccess*	pAccess = reinterpret_cast<K2HDAccess*>(dahandle);
 	if(!pAccess){
 		ERR_K2HPRN("Invalid k2h_da_h handle.");
 		return -1L;
@@ -2184,7 +2184,7 @@ bool k2h_q_free(k2h_q_h qhandle)
 
 bool k2h_q_empty(k2h_q_h qhandle)
 {
-	K2HQueue*	pQueue = reinterpret_cast<K2HQueue*>(qhandle);
+	const K2HQueue*	pQueue = reinterpret_cast<K2HQueue*>(qhandle);
 	if(!pQueue){
 		ERR_K2HPRN("Invalid k2h_q_h handle.");
 		return false;
@@ -2194,7 +2194,7 @@ bool k2h_q_empty(k2h_q_h qhandle)
 
 int k2h_q_count(k2h_q_h qhandle)
 {
-	K2HQueue*	pQueue = reinterpret_cast<K2HQueue*>(qhandle);
+	const K2HQueue*	pQueue = reinterpret_cast<K2HQueue*>(qhandle);
 	if(!pQueue){
 		ERR_K2HPRN("Invalid k2h_q_h handle.");
 		return 0;
@@ -2249,7 +2249,7 @@ bool k2h_q_read_wp(k2h_q_h qhandle, unsigned char** ppdata, size_t* pdatalen, in
 		return false;
 	}
 
-	K2HQueue*	pQueue = reinterpret_cast<K2HQueue*>(qhandle);
+	const K2HQueue*	pQueue = reinterpret_cast<K2HQueue*>(qhandle);
 	if(!pQueue){
 		ERR_K2HPRN("Invalid k2h_q_h handle.");
 		return false;
@@ -2419,7 +2419,7 @@ bool k2h_keyq_free(k2h_keyq_h keyqhandle)
 
 bool k2h_keyq_empty(k2h_keyq_h keyqhandle)
 {
-	K2HKeyQueue*	pQueue = reinterpret_cast<K2HKeyQueue*>(keyqhandle);
+	const K2HKeyQueue*	pQueue = reinterpret_cast<K2HKeyQueue*>(keyqhandle);
 	if(!pQueue){
 		ERR_K2HPRN("Invalid k2h_keyq_h handle.");
 		return false;
@@ -2429,7 +2429,7 @@ bool k2h_keyq_empty(k2h_keyq_h keyqhandle)
 
 int k2h_keyq_count(k2h_keyq_h keyqhandle)
 {
-	K2HKeyQueue*	pQueue = reinterpret_cast<K2HKeyQueue*>(keyqhandle);
+	const K2HKeyQueue*	pQueue = reinterpret_cast<K2HKeyQueue*>(keyqhandle);
 	if(!pQueue){
 		ERR_K2HPRN("Invalid k2h_keyq_h handle.");
 		return 0;
@@ -2514,7 +2514,7 @@ bool k2h_keyq_read_wp(k2h_keyq_h keyqhandle, unsigned char** ppdata, size_t* pda
 		return false;
 	}
 
-	K2HKeyQueue*	pQueue = reinterpret_cast<K2HKeyQueue*>(keyqhandle);
+	const K2HKeyQueue*	pQueue = reinterpret_cast<K2HKeyQueue*>(keyqhandle);
 	if(!pQueue){
 		ERR_K2HPRN("Invalid k2h_keyq_h handle.");
 		return false;
@@ -2533,7 +2533,7 @@ bool k2h_keyq_read_keyval_wp(k2h_keyq_h keyqhandle, unsigned char** ppkey, size_
 		return false;
 	}
 
-	K2HKeyQueue*	pQueue = reinterpret_cast<K2HKeyQueue*>(keyqhandle);
+	const K2HKeyQueue*	pQueue = reinterpret_cast<K2HKeyQueue*>(keyqhandle);
 	if(!pQueue){
 		ERR_K2HPRN("Invalid k2h_keyq_h handle.");
 		return false;
@@ -2686,7 +2686,7 @@ bool k2h_keyq_dump(k2h_keyq_h keyqhandle, FILE* stream)
 //---------------------------------------------------------
 static bool k2h_dump_ext(k2h_h handle, FILE* stream, int mode)
 {
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -2725,7 +2725,7 @@ bool k2h_dump_full(k2h_h handle, FILE* stream)
 
 bool k2h_print_state(k2h_h handle, FILE* stream)
 {
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return false;
@@ -2764,7 +2764,7 @@ void k2h_print_version(FILE* stream)
 
 PK2HSTATE k2h_get_state(k2h_h handle)
 {
-	K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
+	const K2HShm*	pShm = reinterpret_cast<K2HShm*>(handle);
 	if(!pShm){
 		ERR_K2HPRN("Invalid k2hash handle.");
 		return NULL;

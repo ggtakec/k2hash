@@ -671,8 +671,8 @@ bool K2HShm::ReplacePageHead(PPAGEHEAD pLastRelPage, PPAGEHEAD pRelPtr, bool isS
 		// cppcheck-suppress unreadVariable
 		PageWrap.pagehead.next		= isSetPrevPtr ? NULL : pRelPtr;
 	}
-	unsigned char*	pbyData	= &(PageWrap.barray[isSetPrevPtr ? PAGEHEAD_PREV_OFFSET : PAGEHEAD_NEXT_OFFSET]);
-	off_t			offset	= reinterpret_cast<off_t>(pLastRelPage) + (isSetPrevPtr ? PAGEHEAD_PREV_OFFSET : PAGEHEAD_NEXT_OFFSET);
+	const unsigned char*	pbyData	= &(PageWrap.barray[isSetPrevPtr ? PAGEHEAD_PREV_OFFSET : PAGEHEAD_NEXT_OFFSET]);
+	off_t					offset	= reinterpret_cast<off_t>(pLastRelPage) + (isSetPrevPtr ? PAGEHEAD_PREV_OFFSET : PAGEHEAD_NEXT_OFFSET);
 
 	if(-1 == k2h_pwrite(ShmFd, pbyData, sizeof(PPAGEHEAD), offset)){
 		ERR_K2HPRN("Could not write from fd(%d:%jd:%zu).", ShmFd, static_cast<intmax_t>(offset), sizeof(PPAGEHEAD));
@@ -807,7 +807,7 @@ K2HPage* K2HShm::GetPageObject(PPAGEHEAD pRelPageHead, bool need_load) const
 // 0x7FFFFFFF  key_index_area[30] -> PKINDEX[2^29]
 // 0xFFFFFFFF  key_index_area[31] -> PKINDEX[2^30]
 //
-bool K2HShm::GetKIndexPos(k2h_hash_t hash, k2h_arrpos_t& KIPtrArrayPos, k2h_arrpos_t& KIArrayPos, k2h_hash_t* pCurMask) const
+bool K2HShm::GetKIndexPos(k2h_hash_t hash, k2h_arrpos_t& KIPtrArrayPos, k2h_arrpos_t& KIArrayPos, const k2h_hash_t* pCurMask) const
 {
 	if(!IsAttached()){
 		ERR_K2HPRN("There is no attached K2HASH.");
@@ -837,7 +837,7 @@ bool K2HShm::GetKIndexPos(k2h_hash_t hash, k2h_arrpos_t& KIPtrArrayPos, k2h_arrp
 // If *pCurMak is over cur_mask, this means there is not assigned Key Index area.
 // So this function returns NULL.
 //
-PKINDEX K2HShm::GetReservedKIndex(k2h_hash_t hash, bool isAbsolute, k2h_hash_t* pCurMask) const
+PKINDEX K2HShm::GetReservedKIndex(k2h_hash_t hash, bool isAbsolute, const k2h_hash_t* pCurMask) const
 {
 	k2h_arrpos_t	KIPtrArrayPos;
 	k2h_arrpos_t	KIArrayPos;
@@ -1913,8 +1913,8 @@ ssize_t K2HShm::Get(const unsigned char* byKey, size_t length, unsigned char** b
 		}
 
 		// try to decrypt
-		unsigned char*	pDecryptValue;
-		size_t			DecryptLength = 0;
+		const unsigned char*	pDecryptValue;
+		size_t					DecryptLength = 0;
 		if(NULL == (pDecryptValue = attrman.GetDecryptValue(*pAttrs, encpass, DecryptLength))){
 			ERR_K2HPRN("Something error occurred during decrypting value.");
 			K2H_Delete(pAttrs);

@@ -150,7 +150,7 @@ bool K2HDbgControl::LoadEnvName(void)
 
 bool K2HDbgControl::LoadEnvFile(void)
 {
-	char*	pEnvVal;
+	const char*	pEnvVal;
 	if(NULL == (pEnvVal = getenv(K2HDbgControl::DBGENVFILE))){
 		MSG_K2HPRN("%s ENV is not set.", K2HDbgControl::DBGENVFILE);
 		return true;

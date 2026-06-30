@@ -332,8 +332,8 @@ class K2HShm
 		// Accessing data
 		K2HPage* GetPageObject(PPAGEHEAD pRelPageHead, bool need_load = true) const;
 
-		bool GetKIndexPos(k2h_hash_t hash, k2h_arrpos_t& KIPtrArrayPos, k2h_arrpos_t& KIArrayPos, k2h_hash_t* pCurMask) const;
-		PKINDEX GetReservedKIndex(k2h_hash_t hash, bool isAbsolute, k2h_hash_t* pCurMask) const;
+		bool GetKIndexPos(k2h_hash_t hash, k2h_arrpos_t& KIPtrArrayPos, k2h_arrpos_t& KIArrayPos, const k2h_hash_t* pCurMask) const;
+		PKINDEX GetReservedKIndex(k2h_hash_t hash, bool isAbsolute, const k2h_hash_t* pCurMask) const;
 		PKINDEX GetKIndex(k2h_hash_t hash, bool isMergeCurmask, bool is_need_lock = true) const;
 		bool ArrangeToUpperKIndex(k2h_hash_t hash, k2h_hash_t mask) const;
 		bool MoveElementToUpperMask(PELEMENT pElement, PCKINDEX pSrcCKIndex, PCKINDEX pDstCKIndex, k2h_hash_t target_mask, k2h_hash_t target_masked_val) const;

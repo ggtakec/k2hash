@@ -104,7 +104,7 @@ class K2HFileMonitor
 
 	private:
 		bool CloseOnlyFile(void);
-		bool InitializeFileMonitor(PSFMONWRAP pfmonwrap, bool noupdate);
+		bool InitializeFileMonitor(const SFMONWRAP* pfmonwrap, bool noupdate);
 
 		bool CheckInode(bool& is_change, bool valupdate);
 		bool CheckArea(bool& is_change, bool valupdate);

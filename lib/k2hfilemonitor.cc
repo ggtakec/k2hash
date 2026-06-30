@@ -204,7 +204,7 @@ bool K2HFileMonitor::Open(const char* shmfile, bool noupdate)
 	return true;
 }
 
-bool K2HFileMonitor::InitializeFileMonitor(PSFMONWRAP pfmonwrap, bool noupdate)
+bool K2HFileMonitor::InitializeFileMonitor(const SFMONWRAP* pfmonwrap, bool noupdate)
 {
 	if(!pfmonwrap){
 		ERR_K2HPRN("Parameter is wrong.");

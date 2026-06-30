@@ -358,10 +358,10 @@ bool K2HShm::SetElementByBinArray(const PRALLEDATA prawdata, const struct timesp
 	}
 
 	// get datas from rawdata
-	unsigned char*	byKey		= reinterpret_cast<unsigned char*>(prawdata) + prawdata->key_pos;
-	unsigned char*	byValue		= 0 < prawdata->val_length ? (reinterpret_cast<unsigned char*>(prawdata) + prawdata->val_pos) : NULL;
-	unsigned char*	bySubkeys	= 0 < prawdata->skey_length ? (reinterpret_cast<unsigned char*>(prawdata) + prawdata->skey_pos) : NULL;
-	unsigned char*	byAttrs		= 0 < prawdata->attrs_length ? (reinterpret_cast<unsigned char*>(prawdata) + prawdata->attrs_pos) : NULL;
+	const unsigned char*	byKey		= reinterpret_cast<unsigned char*>(prawdata) + prawdata->key_pos;
+	const unsigned char*	byValue		= 0 < prawdata->val_length ? (reinterpret_cast<unsigned char*>(prawdata) + prawdata->val_pos) : NULL;
+	const unsigned char*	bySubkeys	= 0 < prawdata->skey_length ? (reinterpret_cast<unsigned char*>(prawdata) + prawdata->skey_pos) : NULL;
+	const unsigned char*	byAttrs		= 0 < prawdata->attrs_length ? (reinterpret_cast<unsigned char*>(prawdata) + prawdata->attrs_pos) : NULL;
 
 	// check key exists and check to allow over writing
 	K2HFILE_UPDATE_CHECK(const_cast<K2HShm*>(this));

@@ -626,7 +626,7 @@ bool K2HTransManager::Put(const K2HShm* pk2hshm, PBCOM pBinCom)
 		//
 		const unsigned char*		pprefix		= NULL;
 		size_t						prefixlen	= 0;
-		time_t*						expire		= NULL;
+		const time_t*				expire		= NULL;
 		trprefmap_t::const_iterator	iter2;
 		if(trprefmap.end() != (iter2 = trprefmap.find(pk2hshm)) && iter2->second){
 			pprefix		= iter2->second->pprefix;
@@ -882,7 +882,7 @@ bool K2HTransManager::WaitFinish(const K2HShm* pk2hshm, long ms)
 		ms		-= min(ms, waitms);									// remaining time
 
 		struct timespec	waitts, remts;
-		for(waitts.tv_sec = 0, waitts.tv_nsec = (waitms * 1000 * 1000), remts.tv_sec = 0, remts.tv_nsec = 0; -1 == nanosleep(&waitts, &remts) && (0 != remts.tv_sec || 0 != remts.tv_nsec); waitts.tv_sec = remts.tv_sec, waitts.tv_nsec = remts.tv_nsec);
+		for(waitts.tv_sec = 0, waitts.tv_nsec = (waitms * 1000 * 1000), remts.tv_sec = 0, remts.tv_nsec = 0; -1 == nanosleep(&waitts, &remts) || 0 != remts.tv_sec || 0 != remts.tv_nsec; waitts.tv_sec = remts.tv_sec, waitts.tv_nsec = remts.tv_nsec, remts.tv_sec = 0, remts.tv_nsec = 0);
 	}
 	return result;
 }

@@ -106,7 +106,7 @@ bool K2hAttrOpsMan::AddPluginLib(const K2HShm* pshm, const char* path)
 		}
 		// check same library
 		for(k2hattrliblist_t::const_iterator liter = plist->begin(); liter != plist->end(); ++liter){
-			K2hAttrPluginLib*	ploaded = *liter;
+			const K2hAttrPluginLib*	ploaded = *liter;
 			if(*ploaded == *pLib){
 				// found same lib in list
 				ERR_K2HPRN("found same attribute operation object(%s) in list.", ploaded->GetVersionInfo());
@@ -388,7 +388,7 @@ bool K2hAttrOpsMan::MarkHistoryEx(K2HAttrs& attrs, bool is_mark)
 
 		if(pAttrOp && K2hAttrBuiltin::TYPE_ATTRBUILTIN == pAttrOp->GetType()){
 			// found
-			K2hAttrBuiltin*	pAttrBuilt = dynamic_cast<K2hAttrBuiltin*>(pAttrOp);
+			const K2hAttrBuiltin*	pAttrBuilt = dynamic_cast<K2hAttrBuiltin*>(pAttrOp);
 			if(pAttrBuilt){
 				if(is_mark){
 					return pAttrBuilt->MarkHistory(attrs);
