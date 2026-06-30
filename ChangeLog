@@ -1,3 +1,9 @@
+k2hash (1.0.103) unstable; urgency=low
+
+  * Supports Alpine 3.24, manual trigger for GHA, and fix codes - #121
+
+ -- Takeshi Nakatani <ggtakec@gmail.com>  Tue, 30 Jun 2026 12:37:49 +0900
+
 k2hash (1.0.102) unstable; urgency=low
 
   * Common build_helper.sh script was updated for fedora:44 - #119
