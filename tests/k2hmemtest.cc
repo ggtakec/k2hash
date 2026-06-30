@@ -146,7 +146,7 @@ int main(int argc, char** argv)
 		ERR_K2HPRN("Not found \"BASEKEYSTR\" parameter.");
 		exit(-1);
 	}else{
-		strKeyBase = params["BASEKEYSTR"].c_str();
+		strKeyBase = params["BASEKEYSTR"];
 		strKeyBase += "-";
 	}
 	if(params.end() == params.find("COUNT")){
@@ -160,7 +160,7 @@ int main(int argc, char** argv)
 		}
 	}
 	if(params.end() != params.find("VAL")){
-		strValue = params["VAL"].c_str();
+		strValue = params["VAL"];
 	}
 	if(params.end() != params.find("-mask")){
 		MaskBitCnt = atoi(params["-mask"].c_str());

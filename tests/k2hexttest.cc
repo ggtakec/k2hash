@@ -114,7 +114,7 @@ int main(int argc, char** argv)
 	// transaction file
 	string	output = "testtrans.log";
 	if(params.end() != params.find("-putfile")){
-		output = params["-putfile"].c_str();
+		output = params["-putfile"];
 	}
 
 	// extra library

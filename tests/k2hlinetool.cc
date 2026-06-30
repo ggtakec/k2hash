@@ -2947,7 +2947,7 @@ static bool ArchiveCommand(K2HShm& k2hash, const params_t& params)
 		ERR("Unknown parameter(%s) for archive command.", params[0].c_str());
 		return true;	// for continue.
 	}
-	filepath = params[1].c_str();
+	filepath = params[1];
 
 	// archive
 	if(isModeCAPI){

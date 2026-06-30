@@ -217,7 +217,7 @@ int main(int argc, char** argv)
 	size_t		PageSize		= 0UL;
 
 	if(params.end() != params.find("FILE")){
-		strFile = params["FILE"].c_str();
+		strFile = params["FILE"];
 	}else{
 		ERR("must set k2hash file.");
 		exit(-1);

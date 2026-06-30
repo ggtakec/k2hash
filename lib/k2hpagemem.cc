@@ -30,8 +30,7 @@ using namespace std;
 //---------------------------------------------------------
 // Class Methods
 //---------------------------------------------------------
-// cppcheck-suppress constParameter
-bool K2HPageMem::GetData(const K2HShm* pk2hshm, PPAGEHEAD reladdr, unsigned char** ppPageData, size_t* pLength)
+bool K2HPageMem::GetData(const K2HShm* pk2hshm, PPAGEHEAD reladdr, unsigned char** ppPageData, const size_t* pLength)
 {
 	if(!pk2hshm || !ppPageData || !pLength){
 		ERR_K2HPRN("pk2hshm or ppPageData or pLength is NULL");
@@ -156,7 +155,7 @@ bool K2HPageMem::LoadData(bool isPageHead, bool isAllPage)
 	}
 
 	// copy to inner memory
-	unsigned char*	pOneData = &(pPageHead->data[0]);	// so already load head
+	const unsigned char*	pOneData = &(pPageHead->data[0]);	// so already load head
 	if(0UL != pPageHead->length){
 		memcpy(pPageData, pOneData, pPageHead->length);
 		DataLength = pPageHead->length;

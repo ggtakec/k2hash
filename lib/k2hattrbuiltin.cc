@@ -425,7 +425,7 @@ bool K2hAttrBuiltin::Initialize(const K2HShm* pshm, const bool* is_mtime, const 
 
 bool K2hAttrBuiltin::IsMarkHistory(const K2HShm* pshm)
 {
-	PK2HBATTRPACK	pPack = K2hAttrBuiltin::GetBuiltinAttrPack(pshm);
+	const K2HBATTRPACK*	pPack = K2hAttrBuiltin::GetBuiltinAttrPack(pshm);
 	if(!pPack){
 		MSG_K2HPRN("Could not find builtin attribute pack structure for shm, maybe does not initialize builtin attribute. So try to initialize.");
 

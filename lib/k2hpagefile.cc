@@ -32,8 +32,7 @@ using namespace std;
 //---------------------------------------------------------
 // Class Methods
 //---------------------------------------------------------
-// cppcheck-suppress constParameter
-bool K2HPageFile::GetData(const K2HShm* pk2hshm, int fd, off_t offset, unsigned char** ppPageData, size_t* pLength)
+bool K2HPageFile::GetData(const K2HShm* pk2hshm, int fd, off_t offset, unsigned char** ppPageData, const size_t* pLength)
 {
 	if(!ppPageData || !pLength){
 		ERR_K2HPRN("ppPageData or pLength is null");

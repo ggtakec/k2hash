@@ -36,7 +36,7 @@ class K2HPageMem : public K2HPage
 		virtual bool Free(PPAGEHEAD* ppRelLastPageHead, unsigned long* pPageCount, bool isAllPage);
 
 	public:
-		static bool GetData(const K2HShm* pk2hshm, PPAGEHEAD reladdr, unsigned char** ppPageData, size_t* pLength);
+		static bool GetData(const K2HShm* pk2hshm, PPAGEHEAD reladdr, unsigned char** ppPageData, const size_t* pLength);
 		static bool FreeData(unsigned char* pPageData);
 
 		explicit K2HPageMem(const K2HShm* pk2hshm = NULL, PPAGEHEAD reladdr = NULL);
